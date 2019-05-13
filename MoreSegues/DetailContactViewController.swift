@@ -11,6 +11,12 @@ import UIKit
 class DetailContactViewController: UIViewController {
     var contact: Contact? = nil
     
+    override func viewWillLayoutSubviews() {
+        if let fittedSize = topLevelStackView?.sizeThatFits(UIView.layoutFittingCompressedSize) {
+            preferredContentSize = CGSize(width: fittedSize.width + 40, height: fittedSize.height + 40)
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     }

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ContactsListViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class ContactsListViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UIPopoverPresentationControllerDelegate {
     
     var contact: Contact?
     
@@ -17,12 +17,19 @@ class ContactsListViewController: UIViewController, UITableViewDelegate, UITable
             if let detaiViewController = segue.destination as? DetailContactViewController {
                 detaiViewController.contact = contact
             }
+        } else if segue.identifier == "popoverSegue" {
+            if let detaiViewController = segue.destination as? DetailContactViewController {
+                detaiViewController.contact = myContact
+                if let ppc = detaiViewController.popoverPresentationController {
+                    ppc.delegate = self
+                }
+            }
         }
     }
 
     
     @IBAction func goBack(segue: UIStoryboardSegue) {
-       
+       tableView?.reloadData()
     }
     
     var contacts: [Contact] = [
@@ -62,6 +69,11 @@ class ContactsListViewController: UIViewController, UITableViewDelegate, UITable
             contact = contacts[indexPath.row]
             performSegue(withIdentifier: "DetailContactSegue", sender: chosenCell)
         }
+    }
+    
+ 
+    func adaptivePresentationStyle(for controller: UIPresentationController, traitCollection: UITraitCollection) -> UIModalPresentationStyle {
+        return .none
     }
     
     @IBOutlet weak var tableView: UITableView?

@@ -54,7 +54,13 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <navigationItem key="navigationItem" id="pwf-IW-kIU">
-                        <barButtonItem key="leftBarButtonItem" title="My Card" id="CAv-Mm-7lh"/>
+                        <barButtonItem key="leftBarButtonItem" title="My Card" id="CAv-Mm-7lh">
+                            <connections>
+                                <segue destination="nlf-tU-SPF" kind="popoverPresentation" identifier="popoverSegue" popoverAnchorBarButtonItem="CAv-Mm-7lh" id="mB3-1f-hUg">
+                                    <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
+                                </segue>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="Ir9-5f-rs4">
                             <connections>
                                 <segue destination="eOG-S5-hwQ" kind="presentation" identifier="NewContactModaly" id="eMw-O4-J3g"/>
@@ -89,7 +95,7 @@
                                         </barButtonItem>
                                         <barButtonItem key="rightBarButtonItem" title="Done" id="mic-qH-8RD">
                                             <connections>
-                                                <action selector="done:" destination="eOG-S5-hwQ" id="4pH-KJ-p93"/>
+                                                <segue destination="VtQ-nZ-CsS" kind="unwind" unwindAction="goBackWithSegue:" id="MUf-vC-vzk"/>
                                             </connections>
                                         </barButtonItem>
                                     </navigationItem>
@@ -145,6 +151,7 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QpS-Ab-gFw" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="VtQ-nZ-CsS" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="953" y="945"/>
         </scene>
@@ -203,7 +210,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Hi5-ql-9y6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1697" y="143"/>
+            <point key="canvasLocation" x="1777" y="283"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Jzy-ib-lEr">
@@ -222,4 +229,7 @@
             <point key="canvasLocation" x="105" y="145"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="mB3-1f-hUg"/>
+    </inferredMetricsTieBreakers>
 </document>
